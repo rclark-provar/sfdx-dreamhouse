@@ -1,0 +1,12 @@
+{
+    "orgName": "ProvarDx1Setup",
+  	"edition": "Developer",
+  	"adminEmail": "sowjanya.kotha@provartesting.com"
+  	"hasSampleData": true
+  	"LastName": "Dx",
+    "Email": "sowjanya.kotha@provartesting.com",
+    "Alias": "tester1",
+    "profileName": "Standard Platform User",
+    "generatePassword": true,
+    "defaultdevhubusername": "sowjanya.dx1@provartesting.com"
+}
