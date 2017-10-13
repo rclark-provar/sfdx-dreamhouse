@@ -35,7 +35,14 @@ node {
 
         }
 
-        stage('Push To Test Org') {
+        stage('Create password for scratch org') {
+			rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:user:password:generate --targetusername ${SFDC_USERNAME}"
+            if (rc != 0) {
+                error 'password generation failed'
+            }
+        }
+		
+       stage('Push To Test Org') {
             rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'push failed'
