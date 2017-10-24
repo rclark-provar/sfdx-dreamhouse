@@ -1,11 +1,6 @@
 {
   "orgName": "ProvarDx1Setup",
   "edition": "Developer",
-  "adminEmail": "sowjanya.kotha@provartesting.com",
-  "orgPreferences": {
-    "enabled": [
-      "S1DesktopEnabled"
-    ],
-    "disabled": []
-  }
+  "hasSampleData": "true",
+  "adminEmail": "sowjanya.kotha@provartesting.com"
 }
