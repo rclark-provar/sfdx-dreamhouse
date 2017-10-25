@@ -25,7 +25,7 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
 
             // need to pull out assigned username
-            rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:org:create -f config/developerOrg-scratch-def.json --json -s -a scratchOrg1"
+            rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
             printf rmsg
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)
@@ -54,17 +54,17 @@ node {
             }
         }
         
-        stage('Create Users in scratch org') {
-			rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json --targetusername ${SFDC_USERNAME}"
-            if (rc != 0) {
-                error 'User creation failed'
-            }
-            
-            rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json profileName="Chatter Free User" --targetusername ${SFDC_USERNAME}"
-            if (rc != 0) {
-                error 'User creation failed'
-            }
-        }
+        //stage('Create Users in scratch org') {
+		//	rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json --targetusername ${SFDC_USERNAME}"
+        //    if (rc != 0) {
+        //        error 'User creation failed'
+        //    }
+        //    
+        //    rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json profileName="Chatter Free User" --targetusername ${SFDC_USERNAME}"
+        //    if (rc != 0) {
+        //        error 'User creation failed'
+        //    }
+        //}
 
         //stage('Run Provar test cases') {
 		//	rc = sh returnStatus: true, script: "ant -f build.xml -DadminUser=${SFDC_USERNAME}"
