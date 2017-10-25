@@ -21,4 +21,8 @@ node {
 	environment {
 	    env.SFDC_USERNAME = 'test-cmgsmp1je7kk@provardx1setup.net'
 	}
+	
+	stage('Check env') {
+		println(env.SFDC_USERNAME)
+	}
 }
