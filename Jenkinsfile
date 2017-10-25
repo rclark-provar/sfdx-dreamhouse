@@ -36,8 +36,7 @@ node {
         }
 
         stage('Create password for scratch org') {
-        	println(SFDC_USERNAME)
-			rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:user:password:generate --json"
+ 			rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:user:password:generate --json"
 			println(rmsg)
 			def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != 0) { error 'password generation failed: ' + robj.message }
@@ -48,11 +47,6 @@ node {
             rc = sh returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'push failed'
-            }
-            // assign permset
-            rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:permset:assign --targetusername ${SFDC_USERNAME} --permsetname DreamHouse"
-            if (rc != 0) {
-                error 'permset:assign failed'
             }
         }
         
