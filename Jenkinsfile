@@ -24,7 +24,7 @@ node {
     //}
 
     stage('Set default user') {
-        rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:config:set --global defaultdevhubusername=sowjanya.dx1@provartesting.com"
+        rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:config:set --global defaultdevhubusername=sowjanya.dx1@provartesting.com --json"
         println(rmsg)
         def jsonSlurper = new JsonSlurperClassic()
         def robj = jsonSlurper.parseText(rmsg)
