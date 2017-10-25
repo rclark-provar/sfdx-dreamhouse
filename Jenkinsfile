@@ -25,8 +25,16 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
 
             // need to pull out assigned username
-            rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:org:create -v ${HUB_ORG} --json -s -a df13 edition=Developer"
+            rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
             printf rmsg
+            println(rmsg)
+            def beginIndex = rmsg.indexOf('{')
+            def endIndex = rmsg.indexOf('}')
+            println(beginIndex)
+            println(endIndex)
+            def jsobSubstring = rmsg.substring(beginIndex)
+            println(jsobSubstring)
+            
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
