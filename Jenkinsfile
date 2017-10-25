@@ -36,31 +36,31 @@ node {
         }
 
         stage('Create password for scratch org') {
-			rc = sh returnStatus: true, script: "\"${toolbelt}\"/sfdx force:user:password:generate --targetusername ${SFDC_USERNAME}"
+			rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:password:generate --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'password generation failed'
             }
         }
 		
         stage('Push To Test Org') {
-            rc = sh returnStatus: true, script: "\"${toolbelt}\"\sfdx force:source:push --targetusername ${SFDC_USERNAME}"
+            rc = sh returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'push failed'
             }
             // assign permset
-            rc = sh returnStatus: true, script: "\"${toolbelt}\"\sfdx force:user:permset:assign --targetusername ${SFDC_USERNAME} --permsetname DreamHouse"
+            rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:permset:assign --targetusername ${SFDC_USERNAME} --permsetname DreamHouse"
             if (rc != 0) {
                 error 'permset:assign failed'
             }
         }
         
         stage('Create Users in scratch org') {
-			rc = sh returnStatus: true, script: "\"${toolbelt}\"\sfdx force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json --targetusername ${SFDC_USERNAME}"
+			rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'User creation failed'
             }
             
-            rc = sh returnStatus: true, script: "\"${toolbelt}\"\sfdx force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json profileName="Chatter Free User" --targetusername ${SFDC_USERNAME}"
+            rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json profileName="Chatter Free User" --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'User creation failed'
             }
@@ -76,7 +76,7 @@ node {
         //stage('Run Apex Test') {
         //    sh "mkdir -p ${RUN_ARTIFACT_DIR}"
         //    timeout(time: 120, unit: 'SECONDS') {
-        //        rc = sh returnStatus: true, script: "\"${toolbelt}\"\sfdx force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
+        //        rc = sh returnStatus: true, script: "\"${toolbelt}\"/sfdx force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
         //        if (rc != 0) {
         //            error 'apex test run failed'
         //        }
