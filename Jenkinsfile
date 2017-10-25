@@ -38,6 +38,7 @@ node {
         stage('Create password for scratch org') {
  			rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:user:password:generate --json"
 			println(rmsg)
+			def jsonSlurper = new JsonSlurperClassic()
 			def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != 0) { error 'password generation failed: ' + robj.message }
             robj = null
@@ -47,6 +48,7 @@ node {
         	println('Push started')
             rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
             println(rmsg)
+            def jsonSlurper = new JsonSlurperClassic()
 			def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != 0) { error 'Push failed: ' + robj.message }
             robj = null
