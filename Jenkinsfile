@@ -25,7 +25,7 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
 
             // need to pull out assigned username
-            rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:org:create -f config\developerOrg-scratch-def.json --json -s -a scratchOrg1"
+            rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:org:create -f config/developerOrg-scratch-def.json --json -s -a scratchOrg1"
             printf rmsg
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)
