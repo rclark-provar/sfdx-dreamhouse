@@ -19,10 +19,18 @@ node {
     }
 
     //stage('Authenticate dev hub') {
-    //    rc = sh returnStatus: true, script: "\"${toolbelt}\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile \"${jwt_key_file}\" --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
+    //    rc = bat returnStatus: true, script: "\"${toolbelt}\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile \"${jwt_key_file}\" --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
     //    if (rc != 0) { error 'hub org authorization failed' }
     //}
 
+    stage('Set default user') {
+        rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:config:set --global defaultdevhubusername=${HUB_ORG}"
+        println(rmsg)
+        def jsonSlurper = new JsonSlurperClassic()
+        def robj = jsonSlurper.parseText(rmsg)
+        if (robj.status != 0) { error 'Default user failed: ' + robj.message }
+    }
+    
     stage('Create Scratch Org') {
         // need to pull out assigned username
         rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create -f config/developerOrg-scratch-def.json --json -s -a Scratchorg1"
