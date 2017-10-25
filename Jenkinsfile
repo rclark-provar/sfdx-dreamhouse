@@ -44,10 +44,12 @@ node {
         }
 		
         stage('Push To Test Org') {
-            rc = sh returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
-            if (rc != 0) {
-                error 'push failed'
-            }
+        	println(rmsg)
+            rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
+            println(rmsg)
+			def robj = jsonSlurper.parseText(rmsg)
+            if (robj.status != 0) { error 'Push failed: ' + robj.message }
+            robj = null
         }
         
         //stage('Create Users in scratch org') {
@@ -79,8 +81,8 @@ node {
         //    }
         //}
 
-        stage('collect results') {
-            junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'
-        }
+        //stage('collect results') {
+        //    junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'
+        //}
     }
 }
