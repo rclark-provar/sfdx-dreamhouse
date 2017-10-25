@@ -26,21 +26,12 @@ node {
 
             // need to pull out assigned username
             rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
-            printf rmsg
             println(rmsg)
-            def beginIndex = rmsg.indexOf('{')
-            def endIndex = rmsg.indexOf('}')
-            println(beginIndex)
-            println(endIndex)
-            def jsobSubstring = rmsg.substring(beginIndex)
-            println(jsobSubstring)
-            
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)
-            if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
+            if (robj.status != 0) { error 'org creation failed: ' + robj.message }
             SFDC_USERNAME=robj.username
             robj = null
-
         }
 
         stage('Create password for scratch org') {
