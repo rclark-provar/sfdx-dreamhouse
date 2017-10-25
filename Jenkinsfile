@@ -19,7 +19,7 @@ node {
 	//}
 
     stage('Create Scratch Org') {
-        rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:org:create -f config/developerOrg-scratch-def.json --json -s -a ScratchOrg1"
+        rmsg = sh returnStdout: true, script: "sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a ScratchOrg1"
         println(rmsg)
         def jsonSlurper = new JsonSlurperClassic()
         def robj = jsonSlurper.parseText(rmsg)
@@ -32,7 +32,7 @@ node {
     }
 
     stage('Create password for scratch org') {
-		rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:user:password:generate --json"
+		rmsg = sh returnStdout: true, script: "sfdx force:user:password:generate --json"
 		println(rmsg)
 		def jsonSlurper = new JsonSlurperClassic()
 		def robj = jsonSlurper.parseText(rmsg)
@@ -41,16 +41,16 @@ node {
     }
 	
     stage('Push To Test Org') {
-        rc = sh returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
+        rc = sh returnStatus: true, script: "sfdx force:source:push --targetusername ${SFDC_USERNAME}"
         if (rc != 0) { error 'Push failed'}
     }
     
     stage('Create Users in scratch org') {
-		rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json profileName="Standard User" --targetusername ${SFDC_USERNAME}"
+		rc = sh returnStatus: true, script: "sfdx force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json profileName="Standard User" --targetusername ${SFDC_USERNAME}"
         if (rc != 0) {
             error 'User creation failed'
         }
-        rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json profileName="Chatter Free User" --targetusername ${SFDC_USERNAME}"
+        rc = sh returnStatus: true, script: "sfdx force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json profileName="Chatter Free User" --targetusername ${SFDC_USERNAME}"
         if (rc != 0) {
             error 'User creation failed'
         }
