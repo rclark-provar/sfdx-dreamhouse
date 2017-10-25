@@ -19,7 +19,7 @@ node {
     }
 
     stage('list orgs') {
-        rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:org:list --json"
+        rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:list --json"
             println(rmsg)
     }
 
