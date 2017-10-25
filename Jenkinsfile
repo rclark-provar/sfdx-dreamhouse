@@ -31,14 +31,17 @@ node {
             def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
             SFDC_USERNAME=robj.username
+            println(${SFDC_USERNAME})
             robj = null
         }
 
         stage('Create password for scratch org') {
-			rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:password:generate --targetusername ${SFDC_USERNAME}"
-            if (rc != 0) {
-                error 'password generation failed'
-            }
+        	println(${SFDC_USERNAME})
+			rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:user:password:generate --json"
+			println(rmsg)
+			def robj = jsonSlurper.parseText(rmsg)
+            if (robj.status != 0) { error 'password generation failed: ' + robj.message }
+            robj = null
         }
 		
         stage('Push To Test Org') {
