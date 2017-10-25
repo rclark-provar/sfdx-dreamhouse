@@ -46,12 +46,8 @@ node {
 		
         stage('Push To Test Org') {
         	println('Push started')
-            rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
-            println(rmsg)
-            def jsonSlurper = new JsonSlurperClassic()
-			def robj = jsonSlurper.parseText(rmsg)
-            if (robj.status != 0) { error 'Push failed: ' + robj.message }
-            robj = null
+            rc = sh returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
+            if (rc != 0) { error 'Push failed'}
         }
         
         //stage('Create Users in scratch org') {
