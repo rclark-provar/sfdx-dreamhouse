@@ -31,7 +31,9 @@ node {
             def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
             SFDC_USERNAME=robj.result.username
+            env.SFDC_USERNAME_SO = SFDC_USERNAME
             println(SFDC_USERNAME)
+            println(env.SFDC_USERNAME_SO)
             robj = null
         }
 
@@ -45,7 +47,6 @@ node {
         }
 		
         stage('Push To Test Org') {
-        	println('Push started')
             rc = sh returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) { error 'Push failed'}
         }
