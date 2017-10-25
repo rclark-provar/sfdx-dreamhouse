@@ -62,12 +62,4 @@ node {
             error 'User creation failed'
         }
     }
-
-    //stage('Run Provar test cases') {
-	//	rc = sh returnStatus: true, script: "ant -f build.xml -DadminUser=${SFDC_USERNAME}"
-    //    if (rc != 0) {
-    //        error 'User creation failed'
-    //    }
-    //}
-
 }
