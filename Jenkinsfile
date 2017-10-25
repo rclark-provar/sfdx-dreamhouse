@@ -44,7 +44,7 @@ node {
         }
 		
         stage('Push To Test Org') {
-        	println(rmsg)
+        	println('Push started')
             rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
             println(rmsg)
 			def robj = jsonSlurper.parseText(rmsg)
@@ -74,7 +74,7 @@ node {
         //stage('Run Apex Test') {
         //    sh "mkdir -p ${RUN_ARTIFACT_DIR}"
         //    timeout(time: 120, unit: 'SECONDS') {
-        //        rc = sh returnStatus: true, script: "\"${toolbelt}\"/sfdx force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
+        //        rc = sh returnStatus: true, script: "\"${toolbelt}\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
         //        if (rc != 0) {
         //            error 'apex test run failed'
         //        }
