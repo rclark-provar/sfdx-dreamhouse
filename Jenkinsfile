@@ -32,15 +32,13 @@ node {
             def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
             SFDC_USERNAME=robj.result.username
-            env.SFDC_USERNAME_SO = SFDC_USERNAME
             println(SFDC_USERNAME)
-            println(env.SFDC_USERNAME_SO)
             robj = null
         }
 
     	stage('Set Default scratch org') {
             rc = sh returnStatus: true, script: "\"${toolbelt}\" force:config:set --global defaultusername=${SFDC_USERNAME} --json"
-            if (rc != 0) { error 'hub org authorization failed' }
+            if (rc != 0) { error 'Default scratch org failed' }
         }
 
         stage('Create password for scratch org') {
