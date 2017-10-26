@@ -67,12 +67,11 @@ node {
         //    }
         //}
 
-        //stage('Run Provar test cases') {
-		//	rc = sh returnStatus: true, script: "ant -f build.xml -DadminUser=${SFDC_USERNAME}"
-        //    if (rc != 0) {
-        //        error 'User creation failed'
-        //    }
-        //}
+        stage('Run Provar test cases') {
+	    	println(SFDC_USERNAME)
+	    	rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
+	        println(rmsg)
+	    }
 
         //stage('Run Apex Test') {
         //    sh "mkdir -p ${RUN_ARTIFACT_DIR}"

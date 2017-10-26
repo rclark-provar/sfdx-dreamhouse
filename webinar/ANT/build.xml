@@ -1,0 +1,41 @@
+<project default="runtests">
+	<property environment="env"/>
+	<property name="provar.home" value="C:/Program Files/Provar_1.8.11.27/"/>
+	<property name="testproject.home" value="webinar"/>
+	<property name="testproject.results" value="webinar/ANT/Results"/>
+	
+	
+	<taskdef name="Provar-Compile" classname="com.provar.testrunner.ant.CompileTask" classpath="${provar.home}/ant/ant-provar.jar"/>
+	<taskdef name="Run-Test-Case" classname="com.provar.testrunner.ant.RunnerTask" classpath="${provar.home}/ant/ant-provar.jar;${provar.home}/ant/ant-provar-bundled.jar;${provar.home}/ant/ant-provar-sf.jar"/>
+	<taskdef name="Test-Cycle-Report" classname="com.provar.testrunner.ant.TestCycleReportTask" classpath="${provar.home}/ant/ant-provar.jar;${provar.home}/ant/ant-provar-bundled.jar;${provar.home}/ant/ant-provar-sf.jar"/>
+	<taskdef name="Provar-ConfigureDx" classname="com.provar.testrunner.ant.ConfigureDxTask" classpath="${provar.home}/ant/ant-provar.jar;${provar.home}/ant/ant-provar-bundled.jar;${provar.home}/ant/ant-provar-sf.jar"/>
+	
+	<target name="runtests">
+		<Provar-ConfigureDx testEnvironment="Env1"  provarHome="${provar.home}" projectPath="${testproject.home}"  adminUser="${SFDC_USERNAME_SO}" />
+		<Provar-Compile provarHome="${provar.home}" projectPath="${testproject.home}"/>
+	
+		<Run-Test-Case provarHome="${provar.home}" 
+				projectPath="${testproject.home}" 
+				resultsPath="${testproject.results}" 
+				resultsPathDisposition="Replace" 
+				testEnvironment="Env1" 
+				webBrowser="Chrome" 
+				webBrowserConfiguration="Full Screen" 
+				excludeCallableTestCases="true" 
+				salesforceMetadataCache="Reuse" 
+				projectCachePath="../../.provarCaches" 
+				testOutputlevel="WARNING" 
+				pluginOutputlevel="WARNING"
+				invokeTestRunMonitor="true"
+				>
+		
+			<fileset dir="../tests"><include name="Create Task.testcase"/></fileset>
+
+			<emailProperties sendEmail="true" primaryRecipients="geraint.waters@provartesting.com" ccRecipients="" bccRecipients="" emailSubject="Provar test run report" attachExecutionReport="true" attachZip="false"/>
+			<attachmentProperties includeOnlyFailures="false" includeTestCaseDescription="true" includeScreenshots="true" includeWarningMessages="false" includeInfoMessages="false" includeDebugMessages="false" includeTestStepTime="true"/>
+		</Run-Test-Case>
+		
+		
+
+	</target>
+</project>
