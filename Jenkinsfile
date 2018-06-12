@@ -72,7 +72,10 @@ node {
         //    }
         //}
 
-        stage('Run Provar test cases') {
+	stage('Load Test Data') {
+	        println('Test data imported')
+	}
+        stage('Run Provar Test Cases') {
 	    	println(SFDC_USERNAME)
 	    	rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
 	        println(rmsg)
