@@ -27,7 +27,7 @@ node {
         stage('Create Scratch Org') {
             // need to pull out assigned username
             //rmsg = sh returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
-            rmsg = sh returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a TDX18"
+            rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a TDX18"
 
 	    println(rmsg)
 		
@@ -46,7 +46,7 @@ node {
         }
 
         stage('Create password for scratch org') {
- 			rmsg = sh returnStdout: true, script: "\"${toolbelt}\"sfdx force:user:password:generate --json"
+ 			rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:user:password:generate --json"
 			println(rmsg)
 			//def jsonSlurper = new JsonSlurperClassic()
 			//def robj = jsonSlurper.parseText(rmsg)
