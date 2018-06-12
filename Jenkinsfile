@@ -93,8 +93,8 @@ node {
         //    }
         //}
 
-        stage('collect results') {
-        //    junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'
+        stage('Publish Junit Test Results') {
+            junit keepLongStdio: true, testResults: 'webinar/tests/**/*-junit.xml'
         }
     }
 }
