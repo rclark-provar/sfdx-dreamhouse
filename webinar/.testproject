@@ -13,7 +13,7 @@
         <connection name="admin">
           <summary/>
           <connectionUrls>
-            <connectionUrl secureStorageNodeId="a518ee8d-b7db-4138-9cf5-cba889021164" url="sf:user=df13@makepositive.com;password={password};environment=PROD_DEV;lightningMode=true"/>
+            <connectionUrl secureStorageNodeId="a518ee8d-b7db-4138-9cf5-cba889021164" url="sf:user=test-ztb7oxipfmri@example.com;password={password};environment=PROD_DEV;lightningMode=true"/>
           </connectionUrls>
         </connection>
       </connections>
