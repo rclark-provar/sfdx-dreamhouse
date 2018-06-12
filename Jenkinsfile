@@ -35,7 +35,7 @@ node {
             //def robj = jsonSlurper.parseText(rmsg)
             //if (robj.status != 0) { error 'org creation failed: ' + robj.message }
             //SFDC_USERNAME=robj.result.username
-	    SFDC_USERNAME=test-2fijwynkutj6@example.com
+	    SFDC_USERNAME='test-2fijwynkutj6@example.com'
             println(SFDC_USERNAME)
             robj = null
         }
@@ -52,7 +52,7 @@ node {
 			def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != 0) { error 'password generation failed: ' + robj.message }
             robj = null
-	    SFDC_PASSWORD=U(-|vET!6h	
+	    SFDC_PASSWORD='U(-|vET!6h'	
         }
 		
         stage('Push To Test Org') {
