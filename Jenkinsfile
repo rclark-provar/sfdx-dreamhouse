@@ -26,8 +26,8 @@ node {
         
         stage('Create Scratch Org') {
             // need to pull out assigned username
-            //rmsg = sh returnStdout: true, script: "\"${toolbelt}\" force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
-            rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
+            //rmsg = sh returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
+            rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
 
 	    println(rmsg)
             def jsonSlurper = new JsonSlurperClassic()
@@ -39,12 +39,12 @@ node {
         }
 
     	stage('Set Default scratch org') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set --global defaultusername=${SFDC_USERNAME} --json"
+            rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:config:set --global defaultusername=${SFDC_USERNAME} --json"
             if (rc != 0) { error 'Default scratch org failed' }
         }
 
         stage('Create password for scratch org') {
- 			rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:user:password:generate --json"
+ 			rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:user:password:generate --json"
 			println(rmsg)
 			def jsonSlurper = new JsonSlurperClassic()
 			def robj = jsonSlurper.parseText(rmsg)
@@ -53,17 +53,17 @@ node {
         }
 		
         stage('Push To Test Org') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
+            rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) { error 'Push failed'}
         }
         
         //stage('Create Users in scratch org') {
-		//	rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json --targetusername ${SFDC_USERNAME}"
+		//	rc = sh returnStatus: true, script: "\"${toolbelt}\"sfdx force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json --targetusername ${SFDC_USERNAME}"
         //    if (rc != 0) {
         //        error 'User creation failed'
         //    }
         //    
-        //    rc = sh returnStatus: true, script: "\"${toolbelt}\" force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json profileName="Chatter Free User" --targetusername ${SFDC_USERNAME}"
+        //    rc = sh returnStatus: true, script: "\"${toolbelt}\"sfdx force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json profileName="Chatter Free User" --targetusername ${SFDC_USERNAME}"
         //    if (rc != 0) {
         //        error 'User creation failed'
         //    }
@@ -78,7 +78,7 @@ node {
         //stage('Run Apex Test') {
         //    sh "mkdir -p ${RUN_ARTIFACT_DIR}"
         //    timeout(time: 120, unit: 'SECONDS') {
-        //        rc = sh returnStatus: true, script: "\"${toolbelt}\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
+        //        rc = sh returnStatus: true, script: "\"${toolbelt}\"sfdx force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
         //        if (rc != 0) {
         //            error 'apex test run failed'
         //        }
