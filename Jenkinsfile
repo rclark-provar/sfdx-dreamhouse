@@ -77,7 +77,9 @@ node {
 	}
         stage('Run Provar Test Cases') {
 	    	println(SFDC_USERNAME)
-	    	rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
+	    	//rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
+	    	rmsg = bat returnStdout: true, script: "ant -f C:\Users\ProvarTrial4\Provar\StandardDemo\WebinarDemo\ANT\build.xml"
+		
 	        println(rmsg)
 	    }
 
@@ -91,8 +93,8 @@ node {
         //    }
         //}
 
-        //stage('collect results') {
+        stage('collect results') {
         //    junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'
-        //}
+        }
     }
 }
