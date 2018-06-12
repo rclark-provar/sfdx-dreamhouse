@@ -94,7 +94,7 @@ node {
         //}
 
         stage('Publish Junit Test Results') {
-            junit keepLongStdio: true, testResults: 'webinar/tests/**/*-junit.xml'
+            junit keepLongStdio: true, testResults: 'webinar/ANT/Results/**/*-JUnit.xml'
         }
     }
 }
