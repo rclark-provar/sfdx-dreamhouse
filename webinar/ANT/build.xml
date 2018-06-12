@@ -11,7 +11,7 @@
 	<taskdef name="Provar-ConfigureDx" classname="com.provar.testrunner.ant.ConfigureDxTask" classpath="${provar.home}/ant/ant-provar.jar;${provar.home}/ant/ant-provar-bundled.jar;${provar.home}/ant/ant-provar-sf.jar"/>
 	
 	<target name="runtests">
-		<Provar-ConfigureDx testEnvironment="Env1"  provarHome="${provar.home}" projectPath="${testproject.home}"  adminUser="${SFDC_USERNAME_SO}" />
+		<!-- Provar-ConfigureDx testEnvironment="Env1"  provarHome="${provar.home}" projectPath="${testproject.home}"  adminUser="${SFDC_USERNAME_SO}" / -->
 		<Provar-Compile provarHome="${provar.home}" projectPath="${testproject.home}"/>
 	
 		<Run-Test-Case provarHome="${provar.home}" 
