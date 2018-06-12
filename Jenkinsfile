@@ -27,7 +27,7 @@ node {
         stage('Create Scratch Org') {
             // need to pull out assigned username
             //rmsg = sh returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
-            rmsg = sh returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a TDX --durationdays 30"
+            rmsg = sh returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a TDX18"
 
 	    println(rmsg)
 		
@@ -35,7 +35,7 @@ node {
             //def robj = jsonSlurper.parseText(rmsg)
             //if (robj.status != 0) { error 'org creation failed: ' + robj.message }
             //SFDC_USERNAME=robj.result.username
-	    SFDC_USERNAME='test-2fijwynkutj6@example.com'
+	    SFDC_USERNAME='test-ztb7oxipfmri@example.com'
             println(SFDC_USERNAME)
             //robj = null
         }
@@ -52,7 +52,7 @@ node {
 			//def robj = jsonSlurper.parseText(rmsg)
             //if (robj.status != 0) { error 'password generation failed: ' + robj.message }
             //robj = null
-	    SFDC_PASSWORD='U(-|vET!6h'	
+	    SFDC_PASSWORD='[%MuIS43_t'	
         }
 		
         stage('Push To Test Org') {
