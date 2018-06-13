@@ -40,12 +40,17 @@ node {
             println(SFDC_USERNAME)
 	    SFDC_USERNAME="${SCRATCH_ALIAS}"	
             //robj = null
+
+	    rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:config:set --global defaultusername=${SFDC_USERNAME} --json"
+            if (rc != 0) { error 'Default scratch org failed' }
+		
         }
 
-    	stage('Set Default scratch org') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:config:set --global defaultusername=${SFDC_USERNAME} --json"
-            if (rc != 0) { error 'Default scratch org failed' }
-        }
+	// Combined into create scratch org 
+    	//stage('Set Default scratch org') {
+        //    rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:config:set --global defaultusername=${SFDC_USERNAME} --json"
+        //    if (rc != 0) { error 'Default scratch org failed' }
+        //}
 
         stage('Create password for scratch org') {
  			rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:user:password:generate --json"
