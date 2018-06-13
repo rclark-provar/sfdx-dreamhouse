@@ -1,7 +1,7 @@
 <project default="runtests">
 	<property environment="env"/>
-	<!-- property name="provar.home" value="C:/Program Files/ProvarTrial3-1.8.11.39/"/-->
-	<property name="provar.home" value="C:/Program Files/Provar1.9.1/"/>
+	<property name="provar.home" value="C:/Program Files/ProvarTrial3-1.8.11.39/"/>
+	<!-- property name="provar.home" value="C:/Program Files/Provar1.9.1/"/ -->
 	
 	<property name="testproject.home" value="webinar"/>
 	<property name="testproject.results" value="webinar/ANT/Results"/>
@@ -32,7 +32,6 @@
 				>
 		
 			<fileset dir="../tests"><include name="CreateOpportunity.testcase"/></fileset>
-			<fileset dir="../tests"><include name="Test Dreamhouse 1.testcase"/></fileset>
 			<fileset dir="../tests"><include name="Test Dreamhouse 2.testcase"/></fileset>
 
 			<emailProperties sendEmail="true" primaryRecipients="richard.clark@provartesting.com" ccRecipients="" bccRecipients="" emailSubject="Provar test run report" attachExecutionReport="true" attachZip="false"/>
