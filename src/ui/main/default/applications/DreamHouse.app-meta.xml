@@ -13,14 +13,9 @@
     <tabs>Property__c</tabs>
     <tabs>Broker__c</tabs>
     <tabs>standard-Contact</tabs>
-    <tabs>Command_Center</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>standard-Event</tabs>
-    <tabs>Heat_Map_Mock</tabs>
-    <tabs>Heat_Map</tabs>
-    <tabs>Sample_Data_Import</tabs>
-    <tabs>Bot_Command__c</tabs>
     <tabs>standard-File</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>
