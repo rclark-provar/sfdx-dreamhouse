@@ -85,8 +85,8 @@ node {
         //}
 
 	stage('Load Test Data') {
-            //rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:data:tree:import --plan data/sample-data-plan.json"
-            //if (rc != 0) { error 'Push failed'}
+            rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:data:tree:import --plan data/sample-data-plan.json"
+            if (rc != 0) { error 'Push failed'}
 
 	    println('Dreamhouse test data imported')
 	}
