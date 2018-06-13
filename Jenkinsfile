@@ -38,7 +38,7 @@ node {
             //SFDC_USERNAME=robj.result.username
 	    SFDC_USERNAME='test-ztb7oxipfmri@example.com'
             println(SFDC_USERNAME)
-	    SFDC_USERNAME='${SCRATCH_ALIAS}'	
+	    SFDC_USERNAME="${SCRATCH_ALIAS}"	
             //robj = null
         }
 
