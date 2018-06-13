@@ -25,5 +25,4 @@
     <tabs>Bot_Command__c</tabs>
     <tabs>standard-File</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>dreamhouseApplicationUtilityBar</utilityBar>
 </CustomApplication>
