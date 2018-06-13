@@ -71,7 +71,17 @@ node {
             if (rc != 0) { error 'Permset Assignment failed'}
 		
         }
-        
+
+        //stage('Run Apex Test') {
+            sh "mkdir -p ${RUN_ARTIFACT_DIR}"
+            timeout(time: 120, unit: 'SECONDS') {
+                rc = sh returnStatus: true, script: "\"${toolbelt}\"sfdx force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
+                if (rc != 0) {
+                    error 'Apex test run failed'
+                }
+            }
+        }	    
+	    
         //stage('Create Users in scratch org') {
 		//	rc = sh returnStatus: true, script: "\"${toolbelt}\"sfdx force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json --targetusername ${SFDC_USERNAME}"
         //    if (rc != 0) {
