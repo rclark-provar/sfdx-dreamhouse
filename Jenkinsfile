@@ -75,7 +75,10 @@ node {
         //}
 
 	stage('Load Test Data') {
-	        println('Test data imported')
+            rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:data:tree:import --plan data/sample-data-plan.json"
+            if (rc != 0) { error 'Push failed'}
+
+	    println('Dreamhouse test data imported')
 	}
         stage('Run Provar Test Cases') {
 		SFDC_USERNAME = 'test-ztb7oxipfmri@example.com'
