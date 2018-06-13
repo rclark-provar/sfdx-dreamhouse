@@ -65,6 +65,11 @@ node {
         stage('Push To Test Org') {
             rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) { error 'Push failed'}
+		
+	    // Grant DH Permission set
+	    rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx  force:user:permset:assign --permsetname DreamHouse --targetusername ${SFDC_USERNAME}"
+            if (rc != 0) { error 'Permset Assignment failed'}
+		
         }
         
         //stage('Create Users in scratch org') {
