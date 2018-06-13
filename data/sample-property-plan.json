@@ -1,0 +1,9 @@
+[
+  {
+    "sobject": "Property__c",
+    "resolveRefs": true,
+    "files": [
+      "properties-data.json"
+    ]
+  }
+]
