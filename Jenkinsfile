@@ -14,7 +14,7 @@ node {
 
     def toolbelt = tool 'toolbelt'
 
-    stage('checkout source') {
+    stage('Checkout Source from VCS') {
         // when running in multi-branch job, one must issue this command
         checkout scm
     }
@@ -52,7 +52,7 @@ node {
         //    if (rc != 0) { error 'Default scratch org failed' }
         //}
 
-        stage('Create password for scratch org') {
+        stage('Create Scratch Org Password') {
  			rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:user:password:generate --json"
 			println(rmsg)
 			//def jsonSlurper = new JsonSlurperClassic()
@@ -62,7 +62,7 @@ node {
 	    SFDC_PASSWORD='[%MuIS43_t'	
         }
 		
-        stage('Push To Test Org') {
+        stage('Push to Test Org') {
             rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) { error 'Push failed'}
 		
@@ -82,7 +82,7 @@ node {
             }
         }	    
 	    
-        //stage('Create Users in scratch org') {
+        //stage('Create Users in Scratch Org') {
 		//	rc = sh returnStatus: true, script: "\"${toolbelt}\"sfdx force:user:create -a scratchOrg2@user2.com -f config/user-scratch-def.json --json --targetusername ${SFDC_USERNAME}"
         //    if (rc != 0) {
         //        error 'User creation failed'
