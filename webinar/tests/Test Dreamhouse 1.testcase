@@ -415,7 +415,7 @@
                   <value class="uiInteraction" uri="ui:interaction?name=set"/>
                 </argument>
                 <argument id="value">
-                  <value class="value" valueClass="string">300</value>
+                  <value class="value" valueClass="string">301</value>
                 </argument>
                 <argument id="blur">
                   <value class="value" valueClass="boolean">false</value>
