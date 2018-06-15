@@ -34,7 +34,7 @@
 			<fileset dir="../tests"><include name="CreateOpportunity.testcase"/></fileset>
 			<fileset dir="../tests"><include name="Test Dreamhouse 2.testcase"/></fileset>
 
-			<emailProperties sendEmail="true" primaryRecipients="richard.clark@provartesting.com" ccRecipients="" bccRecipients="" emailSubject="Provar test run report" attachExecutionReport="true" attachZip="false"/>
+			<emailProperties sendEmail="true" primaryRecipients="geraint.waters@provartesting.com" ccRecipients="" bccRecipients="" emailSubject="Provar test run report" attachExecutionReport="true" attachZip="false"/>
 			<attachmentProperties includeOnlyFailures="false" includeTestCaseDescription="true" includeScreenshots="true" includeWarningMessages="false" includeInfoMessages="false" includeDebugMessages="false" includeTestStepTime="true"/>
 		</Run-Test-Case>
 		
