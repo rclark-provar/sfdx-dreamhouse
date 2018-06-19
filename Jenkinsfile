@@ -104,21 +104,12 @@ node {
 		SFDC_USERNAME = 'test-ztb7oxipfmri@example.com'
 	    	println(SFDC_USERNAME)
 	    	//rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
-	    	rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
+	    	rmsg = bat returnStdout: false, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
 	    	//rmsg = bat returnStdout: true, script: "ant -f c:/Users/ProvarTrial4/Provar/StandardDemo/WebinarDemo/ANT/build.xml"
 		
 	        println(rmsg)
 	    }
 
-        //stage('Run Apex Test') {
-        //    sh "mkdir -p ${RUN_ARTIFACT_DIR}"
-        //    timeout(time: 120, unit: 'SECONDS') {
-        //        rc = sh returnStatus: true, script: "\"${toolbelt}\"sfdx force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
-        //        if (rc != 0) {
-        //            error 'apex test run failed'
-        //        }
-        //    }
-        //}
 
         stage('Publish Junit Test Results') {
             junit keepLongStdio: true, testResults: 'webinar/ANT/**/*.xml'
