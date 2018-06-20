@@ -196,7 +196,7 @@
                   <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Property Name field to Hilton Hotel</value>
+                  <value class="value" valueClass="string">Set the Property Name field to Hilton</value>
                 </argument>
                 <argument id="autoRetry"/>
               </arguments>
