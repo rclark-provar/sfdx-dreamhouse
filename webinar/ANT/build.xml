@@ -1,6 +1,6 @@
 <project default="runtests">
 	<property environment="env"/>
-	<property name="provar.home" value="C:/Program Files/ProvarTrial3-1.8.11.37/"/>
+	<property name="provar.home" value="C:/Program Files/ProvarTrial3-1.9.3.04/"/>
 	<!-- property name="provar.home" value="C:/Program Files/Provar1.9.1/"/ -->
 	
 	<property name="testproject.home" value="webinar"/>
