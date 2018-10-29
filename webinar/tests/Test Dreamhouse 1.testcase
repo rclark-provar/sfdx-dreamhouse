@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase id="2">
+<testCase id="4">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: ScratchAdmin (Test)">
       <arguments>
         <argument id="connectionName">
-          <value class="value" valueClass="string">admin</value>
+          <value class="value" valueClass="string">ScratchAdmin</value>
         </argument>
         <argument id="resultName">
           <value class="value" valueClass="string">ScratchAdmin</value>
@@ -41,6 +41,27 @@
           <value class="value" valueClass="string">enable</value>
         </argument>
         <argument id="webBrowser"/>
+      </arguments>
+    </apiCall>
+    <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" name="SetValues" testItemId="41" title="Set Values: TestStart">
+      <arguments>
+        <argument id="values">
+          <value class="valueList" mutable="Mutable">
+            <namedValues mutable="Mutable">
+              <namedValue name="valuePath">
+                <value class="value" valueClass="string">TestStart</value>
+              </namedValue>
+              <namedValue name="value">
+                <value class="variable">
+                  <path element="NOW"/>
+                </value>
+              </namedValue>
+              <namedValue name="valueScope">
+                <value class="value" valueClass="string">Test</value>
+              </namedValue>
+            </namedValues>
+          </value>
+        </argument>
       </arguments>
     </apiCall>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="2" title="On SF Property Home screen">
@@ -196,7 +217,7 @@
                   <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Property Name field to Hilton</value>
+                  <value class="value" valueClass="string">Set the Property Name field to Hilton Hotel</value>
                 </argument>
                 <argument id="autoRetry"/>
               </arguments>
@@ -952,5 +973,28 @@
         </apiParam>
       </generatedParameters>
     </apiCall>
+    <apiCall apiId="com.provar.plugins.bundled.apis.control.Finally" name="Finally" testItemId="42">
+      <arguments>
+        <argument id="description"/>
+      </arguments>
+      <clauses>
+        <clause name="hidden" testItemId="43"/>
+      </clauses>
+    </apiCall>
+    <caseCall testCaseId="0f10c191-28ab-44c6-b634-2e62944c544b" testCasePath="tests/TestResultsLoggging/_Save Test Result.testcase" testItemId="44">
+      <arguments>
+        <argument id="TestCaseName">
+          <value class="funcCall" id="TestCaseName"/>
+        </argument>
+        <argument id="TestCaseResult">
+          <value class="funcCall" id="TestCaseOutcome"/>
+        </argument>
+        <argument id="TestStartTime">
+          <value class="variable">
+            <path element="TestStart"/>
+          </value>
+        </argument>
+      </arguments>
+    </caseCall>
   </steps>
 </testCase>

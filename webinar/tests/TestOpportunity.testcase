@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase id="10">
+<testCase>
   <summary/>
   <steps>
-    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: ScratchAdmin (Test)">
+    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: admin (Test)">
       <arguments>
         <argument id="connectionName">
           <value class="value" valueClass="string">ScratchAdmin</value>
         </argument>
         <argument id="resultName">
-          <value class="value" valueClass="string">ScratchAdmin</value>
+          <value class="value" valueClass="string">admin</value>
         </argument>
         <argument id="resultScope">
           <value class="value" valueClass="string">Test</value>
@@ -41,7 +41,7 @@
         <argument id="webBrowser"/>
       </arguments>
     </apiCall>
-    <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" name="SetValues" testItemId="11" title="Set Values: StartTest">
+    <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" name="SetValues" testItemId="3" title="Set Values: StartTest">
       <arguments>
         <argument id="values">
           <value class="valueList" mutable="Mutable">
@@ -62,59 +62,73 @@
         </argument>
       </arguments>
     </apiCall>
-    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexCreateObject" name="ApexCreateObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand" testItemId="2" title="Create Object: Broker__c=&gt;BrokerId">
+    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexCreateObject" name="ApexCreateObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand" testItemId="2" title="Create Object: Opportunity=&gt;OpportunityId">
       <arguments>
         <argument id="objectType">
-          <value class="value" valueClass="string">Broker__c</value>
+          <value class="value" valueClass="string">Opportunity</value>
         </argument>
         <argument id="resultIdName">
-          <value class="value" valueClass="string">BrokerId</value>
+          <value class="value" valueClass="string">OpportunityId</value>
         </argument>
         <argument id="apexConnectionName">
-          <value class="value" valueClass="string">ScratchAdmin</value>
+          <value class="value" valueClass="string">admin</value>
+        </argument>
+        <argument id="Name">
+          <value class="compound">
+            <parts>
+              <value valueClass="string">UI Test </value>
+              <funcCall id="UniqueId"/>
+            </parts>
+          </value>
+        </argument>
+        <argument id="StageName">
+          <value class="value" valueClass="string">Prospecting</value>
+        </argument>
+        <argument id="Probability">
+          <value class="value" valueClass="decimal">10.0</value>
+        </argument>
+        <argument id="CloseDate">
+          <value class="funcCall" id="DateAdd">
+            <argument id="date">
+              <value class="variable">
+                <path element="TODAY"/>
+              </value>
+            </argument>
+            <argument id="amount">
+              <value class="value" valueClass="decimal">90</value>
+            </argument>
+          </value>
+        </argument>
+        <argument id="ForecastCategoryName">
+          <value class="value" valueClass="string">Pipeline</value>
         </argument>
         <argument id="assignmentRuleId"/>
         <argument id="resultScope">
           <value class="value" valueClass="string">Test</value>
         </argument>
-        <argument id="Name">
-          <value class="value" valueClass="string">Geraint Waters</value>
-        </argument>
-        <argument id="Email__c">
-          <value class="value" valueClass="string">geraint.waters@provartesting.com</value>
-        </argument>
-        <argument id="Mobile_Phone__c"/>
-        <argument id="Phone__c"/>
-        <argument id="Picture__c">
-          <value class="value" valueClass="string">https://pbs.twimg.com/profile_images/905822776048713728/zlEWoFqA_400x400.jpg</value>
-        </argument>
-        <argument id="Title__c">
-          <value class="value" valueClass="string">Product Manager</value>
-        </argument>
       </arguments>
       <parameterGeneratorProperties>
-        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand.ConnectionName">ScratchAdmin</propertyValue>
-        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand.CustomObjectName">Broker__c</propertyValue>
+        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand.ConnectionName">admin</propertyValue>
+        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand.CustomObjectName">Opportunity</propertyValue>
       </parameterGeneratorProperties>
       <generatedParameters>
-        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Name" name="Name" title="Name"/>
-        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Email__c" name="Email__c" title="Email__c"/>
-        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Mobile_Phone__c" name="Mobile_Phone__c" title="Mobile_Phone__c"/>
-        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Phone__c" name="Phone__c" title="Phone__c"/>
-        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Picture__c" name="Picture__c" title="Picture__c"/>
-        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Title__c" name="Title__c" title="Title__c"/>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Opportunity&amp;field=Name" name="Name" title="Name"/>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Opportunity&amp;field=StageName" name="StageName" title="StageName"/>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Opportunity&amp;field=Probability" name="Probability" title="Probability"/>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Opportunity&amp;field=CloseDate" name="CloseDate" title="CloseDate"/>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Opportunity&amp;field=ForecastCategoryName" name="ForecastCategoryName" title="ForecastCategoryName"/>
       </generatedParameters>
     </apiCall>
-    <apiCall apiId="com.provar.plugins.bundled.apis.control.Finally" name="Finally" testItemId="3" title="Finally: Save results">
+    <apiCall apiId="com.provar.plugins.bundled.apis.control.Finally" name="Finally" testItemId="4" title="Finally: Save results">
       <arguments>
         <argument id="description">
           <value class="value" valueClass="string">Save results</value>
         </argument>
       </arguments>
       <clauses>
-        <clause name="hidden" testItemId="4">
+        <clause name="hidden" testItemId="5">
           <steps>
-            <caseCall testCaseId="0f10c191-28ab-44c6-b634-2e62944c544b" testCasePath="tests/TestResultsLoggging/_Save Test Result.testcase" testItemId="9">
+            <caseCall testCaseId="0f10c191-28ab-44c6-b634-2e62944c544b" testCasePath="tests/TestResultsLoggging/_Save Test Result.testcase" testItemId="6">
               <arguments>
                 <argument id="TestCaseName">
                   <value class="funcCall" id="TestCaseName"/>
