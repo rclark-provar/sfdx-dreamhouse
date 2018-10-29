@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testProject selectedBrowserConfigurationName="Full Screen">
-  <title>/webinar/.testproject</title>
+<testProject selectedBrowserConfigurationName="Full Screen" selectedBrowserProviderDeviceName="Full Screen" selectedBrowserProviderName="Desktop">
+  <title>/TXD18/.testproject</title>
   <configPath>config</configPath>
   <testsPath>tests</testsPath>
   <templatesPath>templates</templatesPath>
@@ -10,10 +10,16 @@
   <connectionClasses>
     <connectionClass name="sf">
       <connections>
-        <connection name="admin">
+        <connection name="ScratchAdmin">
           <summary/>
           <connectionUrls>
-            <connectionUrl secureStorageNodeId="a518ee8d-b7db-4138-9cf5-cba889021164" url="sf:user=test-ajtmej2fujqw@example.com;password={password};environment=SANDBOX;lightningMode=true"/>
+            <connectionUrl secureStorageNodeId="d9e147c3-c377-4de9-b3f8-de93c7b24520" url="sf:user=test-ajtmej2fujqw@example.com;password={password};environment=SANDBOX;lightningMode=true"/>
+          </connectionUrls>
+        </connection>
+        <connection name="ResultsOrg">
+          <summary>Provar Test Results</summary>
+          <connectionUrls>
+            <connectionUrl secureStorageNodeId="653ffc8b-dc95-43f4-b6ec-9696e981e212" url="sf:user=provardemo@provartesting.com;password={password};environment=PROD_DEV"/>
           </connectionUrls>
         </connection>
       </connections>
@@ -36,4 +42,69 @@
       <summary>Fixed 1920x1080</summary>
     </browserConfiguration>
   </browserConfigurations>
+  <antPath>ANT</antPath>
+  <browserApplications>
+    <browserApplication connectionTypes="sf" name="Salesforce1">
+      <properties>
+        <browserPlatformProperty name="browserName" platform="IOS" type="DesiredCapability" value="Safari"/>
+        <browserPlatformProperty name="browserName" platform="ANDROID" type="DesiredCapability" value="Chrome"/>
+      </properties>
+    </browserApplication>
+    <browserApplication connectionTypes="sf" name="ServiceMax FSA">
+      <properties>
+        <browserPlatformProperty name="bundleId" platform="IOS" type="DesiredCapability" value="com.servicemaxinc.svmxfieldserviceapp"/>
+        <browserPlatformProperty name="app" platform="DESKTOP" type="DesiredCapability" value="C:\\Program Files\\ServiceMax\\ServiceMax Field Service\\Laptop Mobile.exe"/>
+      </properties>
+    </browserApplication>
+  </browserApplications>
+  <browserProviders>
+    <browserProvider name="Desktop" type="SeleniumLocal">
+      <devices>
+        <browserProviderDevice name="Full Screen">
+          <properties>
+            <browserPlatformProperty name="summary" value="Full screen with Test Builder adjustment"/>
+            <browserPlatformProperty name="browserHeightType" value="Full"/>
+            <browserPlatformProperty name="browserWidthType" value="Full"/>
+            <browserPlatformProperty name="adjustBrowserWidthForChromeIde" value="true"/>
+          </properties>
+        </browserProviderDevice>
+        <browserProviderDevice name="1024x768">
+          <properties>
+            <browserPlatformProperty name="summary" value="Fixed 1024x768"/>
+            <browserPlatformProperty name="browserHeightType" value="Pixels"/>
+            <browserPlatformProperty name="browserWidthType" value="Pixels"/>
+            <browserPlatformProperty name="browserHeight" value="768"/>
+            <browserPlatformProperty name="browserWidth" value="1024"/>
+          </properties>
+        </browserProviderDevice>
+        <browserProviderDevice name="1280x800">
+          <properties>
+            <browserPlatformProperty name="summary" value="Fixed 1280x800"/>
+            <browserPlatformProperty name="browserHeightType" value="Pixels"/>
+            <browserPlatformProperty name="browserWidthType" value="Pixels"/>
+            <browserPlatformProperty name="browserHeight" value="800"/>
+            <browserPlatformProperty name="browserWidth" value="1280"/>
+          </properties>
+        </browserProviderDevice>
+        <browserProviderDevice name="1366x768">
+          <properties>
+            <browserPlatformProperty name="summary" value="Fixed 1366x768"/>
+            <browserPlatformProperty name="browserHeightType" value="Pixels"/>
+            <browserPlatformProperty name="browserWidthType" value="Pixels"/>
+            <browserPlatformProperty name="browserHeight" value="768"/>
+            <browserPlatformProperty name="browserWidth" value="1366"/>
+          </properties>
+        </browserProviderDevice>
+        <browserProviderDevice name="1920x1080">
+          <properties>
+            <browserPlatformProperty name="summary" value="Fixed 1920x1080"/>
+            <browserPlatformProperty name="browserHeightType" value="Pixels"/>
+            <browserPlatformProperty name="browserWidthType" value="Pixels"/>
+            <browserPlatformProperty name="browserHeight" value="1080"/>
+            <browserPlatformProperty name="browserWidth" value="1920"/>
+          </properties>
+        </browserProviderDevice>
+      </devices>
+    </browserProvider>
+  </browserProviders>
 </testProject>
