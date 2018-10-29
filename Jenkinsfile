@@ -10,7 +10,7 @@ node {
     def SFDC_HOST = env.SFDC_HOST_DH
     def JWT_KEY_CRED_ID = env.JWT_CRED_ID_DH
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
-    def SCRATCH_ALIAS = 'TDX18'
+    def SCRATCH_ALIAS = 'FTD18'
 
     def toolbelt = tool 'toolbelt'
 
@@ -28,7 +28,7 @@ node {
         stage('Create Scratch Org') {
             // need to pull out assigned username
             //rmsg = sh returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
-            rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a ${SCRATCH_ALIAS} --durationdays 1"
+            rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a ${SCRATCH_ALIAS} --durationdays 30"
 
 	    println(rmsg)
 		
