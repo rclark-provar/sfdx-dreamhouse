@@ -35,3 +35,4 @@ public class MyPageObject {
 	@TextType()
 	@FindBy(xpath = "//span[@class='price-large']/../../..//span[@id='newBuyBoxPrice']")
 	public WebElement buyNewOnClicking;
+}
