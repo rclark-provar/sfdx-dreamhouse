@@ -36,7 +36,7 @@ node {
             //def robj = jsonSlurper.parseText(rmsg)
             //if (robj.status != 0) { error 'org creation failed: ' + robj.message }
             //SFDC_USERNAME=robj.result.username
-	    SFDC_USERNAME='test-ztb7oxipfmri@example.com'
+	    SFDC_USERNAME='test-ajtmej2fujqw@example.com'
             println(SFDC_USERNAME)
 	    SFDC_USERNAME="${SCRATCH_ALIAS}"	
             //robj = null
@@ -101,7 +101,7 @@ node {
 	    println('Dreamhouse test data imported')
 	}
         stage('Run Provar Test Cases') {
-		SFDC_USERNAME = 'test-ztb7oxipfmri@example.com'
+		SFDC_USERNAME = 'test-ajtmej2fujqw@example.com'
 	    	println(SFDC_USERNAME)
 	    	//rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
 	    	rmsg = bat returnStdout: false, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
