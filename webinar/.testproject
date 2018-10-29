@@ -8,6 +8,16 @@
   <secureStoragePath>.secrets</secureStoragePath>
   <browserDebugPort>0</browserDebugPort>
   <connectionClasses>
+    <connectionClass name="ui">
+      <connections>
+        <connection name="GoogleSearch">
+          <summary>Google Search\t</summary>
+          <connectionUrls>
+            <connectionUrl url="se:baseUrl=http://www.google.com"/>
+          </connectionUrls>
+        </connection>
+      </connections>
+    </connectionClass>
     <connectionClass name="sf">
       <connections>
         <connection name="ScratchAdmin">
