@@ -95,7 +95,7 @@ node {
         //}
 
 	stage('Load Test Data') {
-            rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:data:tree:import --plan data/sample-data-plan.json"
+//            rc = bat returnStatus: true, script: "\"${toolbelt}\"sfdx force:data:tree:import --plan data/sample-data-plan.json"
             //if (rc != 0) { error 'Push failed'}
 
 	    println('Dreamhouse test data imported')
@@ -105,7 +105,7 @@ node {
 		SFDC_USERNAME = 'test-ajtmej2fujqw@example.com'
 	    	println(SFDC_USERNAME)
 	    	//rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
-	    	rmsg = bat returnStdout: false, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
+//	    	rmsg = bat returnStdout: false, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
 		//rmsg = bat returnStdout: false, script: "sfdx provar:runtests -f provardx-dev.json -u ${SFDC_USERNAME} -p ${SFDC_PASSWORD}"
 
 	    	//rmsg = bat returnStdout: true, script: "ant -f c:/Users/ProvarTrial4/Provar/StandardDemo/WebinarDemo/ANT/build.xml"
