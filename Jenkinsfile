@@ -10,7 +10,7 @@ node {
     def SFDC_HOST = env.SFDC_HOST_DH
     def JWT_KEY_CRED_ID = env.JWT_CRED_ID_DH
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
-    def SCRATCH_ALIAS = 'FTD18'
+    def SCRATCH_ALIAS = 'LC19'
 
     def toolbelt = tool 'toolbelt'
 
@@ -100,11 +100,14 @@ node {
 
 	    println('Dreamhouse test data imported')
 	}
+	    
         stage('Run Provar Test Cases') {
 		SFDC_USERNAME = 'test-ajtmej2fujqw@example.com'
 	    	println(SFDC_USERNAME)
 	    	//rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
 	    	rmsg = bat returnStdout: false, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
+		//rmsg = bat returnStdout: false, script: "sfdx provar:runtests -f provardx-dev.json -u ${SFDC_USERNAME} -p ${SFDC_PASSWORD}"
+
 	    	//rmsg = bat returnStdout: true, script: "ant -f c:/Users/ProvarTrial4/Provar/StandardDemo/WebinarDemo/ANT/build.xml"
 		
 	        println(rmsg)
