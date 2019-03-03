@@ -59,7 +59,7 @@ node {
 			//def robj = jsonSlurper.parseText(rmsg)
             //if (robj.status != 0) { error 'password generation failed: ' + robj.message }
             //robj = null
-	    SFDC_PASSWORD='[%MuIS43_t'	
+	    SFDC_PASSWORD='eD6)f0%9-*'	
         }
 		
         stage('Push to Test Org') {
@@ -105,7 +105,7 @@ node {
 		SFDC_USERNAME = 'test-ajtmej2fujqw@example.com'
 	    	println(SFDC_USERNAME)
 	    	//rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
-//	    	rmsg = bat returnStdout: false, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
+	    	rmsg = bat returnStdout: false, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
 		//rmsg = bat returnStdout: false, script: "sfdx provar:runtests -f provardx-dev.json -u ${SFDC_USERNAME} -p ${SFDC_PASSWORD}"
 
 	    	//rmsg = bat returnStdout: true, script: "ant -f c:/Users/ProvarTrial4/Provar/StandardDemo/WebinarDemo/ANT/build.xml"
