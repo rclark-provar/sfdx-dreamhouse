@@ -11,7 +11,7 @@ node {
     def JWT_KEY_CRED_ID = env.JWT_CRED_ID_DH
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
 //    def SCRATCH_ALIAS = 'LC19'	// for ProvarDX
-    def SCRATCH_ALIAS = 'dreamhouse@provartesting.com'	// for ConfigureDX 
+    def SCRATCH_ALIAS = 'LC19'	// for ConfigureDX 
 
     def toolbelt = tool 'toolbelt'
 
@@ -103,7 +103,7 @@ node {
 	}
 	    
         stage('Run Provar Test Cases') {
-		//SFDC_USERNAME = 'test-dbvnmzbtmco7@example.com'
+		SFDC_USERNAME = 'test-dbvnmzbtmco7@example.com'
 	    	println(SFDC_USERNAME)
 	    	//rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
 	    	rmsg = bat returnStdout: false, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
