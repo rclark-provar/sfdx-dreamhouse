@@ -23,7 +23,7 @@
         <connection name="ScratchAdmin">
           <summary/>
           <connectionUrls>
-            <connectionUrl secureStorageNodeId="d9e147c3-c377-4de9-b3f8-de93c7b24520" url="sf:user=test-ajtmej2fujqw@example.com;password={password};environment=SANDBOX;lightningMode=true"/>
+            <connectionUrl secureStorageNodeId="d9e147c3-c377-4de9-b3f8-de93c7b24520" url="sf:user=dreamhouse@provartesting.com;password={password};environment=SANDBOX;lightningMode=true"/>
           </connectionUrls>
         </connection>
         <connection name="ResultsOrg">
