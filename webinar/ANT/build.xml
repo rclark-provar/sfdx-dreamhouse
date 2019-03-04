@@ -15,7 +15,8 @@
 	<target name="runtests">
 		<Provar-ConfigureDx testEnvironment="Env1"  
 				    provarHome="${provar.home}" 
-				    projectPath="${testproject.home}"  
+				    projectPath="${testproject.home}"
+				    testOutputlevel=”FINE”
 				    adminUser="${SFDC_USERNAME_SO}" />
 		<Provar-Compile provarHome="${provar.home}" projectPath="${testproject.home}"/>
 	
