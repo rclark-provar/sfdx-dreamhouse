@@ -29,7 +29,7 @@ node {
         stage('Create Scratch Org') {
             // need to pull out assigned username
             //rmsg = sh returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
-            rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a ${SCRATCH_ALIAS} --durationdays 30"
+            rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a ${SCRATCH_ALIAS} --durationdays 1"
 
 	    println(rmsg)
 		
@@ -37,7 +37,7 @@ node {
             //def robj = jsonSlurper.parseText(rmsg)
             //if (robj.status != 0) { error 'org creation failed: ' + robj.message }
             //SFDC_USERNAME=robj.result.username
-	    SFDC_USERNAME='test-ajtmej2fujqw@example.com'
+	    SFDC_USERNAME='test-dbvnmzbtmco7@example.com'
             println(SFDC_USERNAME)
 	    SFDC_USERNAME="${SCRATCH_ALIAS}"	
             //robj = null
@@ -103,7 +103,7 @@ node {
 	}
 	    
         stage('Run Provar Test Cases') {
-		SFDC_USERNAME = 'test-ajtmej2fujqw@example.com'
+		//SFDC_USERNAME = 'test-dbvnmzbtmco7@example.com'
 	    	println(SFDC_USERNAME)
 	    	//rmsg = bat returnStdout: true, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
 	    	rmsg = bat returnStdout: false, script: "ant -f webinar/ANT/build.xml -DSFDC_USERNAME_SO=${SFDC_USERNAME}"
