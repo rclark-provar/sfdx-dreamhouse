@@ -13,12 +13,12 @@
 	<taskdef name="Provar-ConfigureDx" classname="com.provar.testrunner.ant.ConfigureDxTask" classpath="${provar.home}/ant/ant-provar.jar;${provar.home}/ant/ant-provar-bundled.jar;${provar.home}/ant/ant-provar-sf.jar"/>
 	
 	<target name="runtests">
-		<Provar-ConfigureDx testEnvironment="Env1"  
+		<!-- Provar-ConfigureDx testEnvironment="Env1"  
 				    provarHome="${provar.home}" 
 				    projectPath="${testproject.home}"
 				    testOutputlevel="FINE"
 				    adminUser="${SFDC_USERNAME_SO}" />
-		<Provar-Compile provarHome="${provar.home}" projectPath="${testproject.home}"/>
+		<Provar-Compile provarHome="${provar.home}" projectPath="${testproject.home}"/ -->
 	
 		<Run-Test-Case provarHome="${provar.home}" 
 				projectPath="${testproject.home}" 
@@ -35,8 +35,8 @@
 				invokeTestRunMonitor="true"
 				>
 		
-			<!-- fileset dir="../tests"><include name="Test Case 1.testcase"/></fileset -->
-			<fileset dir="../tests"><include name="Test Dreamhouse 1.testcase"/></fileset>
+			<fileset dir="../tests"><include name="Test Case 1.testcase"/></fileset>
+			<!-- fileset dir="../tests"><include name="Test Dreamhouse 1.testcase"/></fileset -->
 
 			<emailProperties sendEmail="true" primaryRecipients="richard.clark@provartesting.com" ccRecipients="" bccRecipients="" emailSubject="Provar test run report" attachExecutionReport="true" attachZip="false"/>
 			<attachmentProperties includeOnlyFailures="false" includeTestCaseDescription="true" includeScreenshots="true" includeWarningMessages="false" includeInfoMessages="false" includeDebugMessages="false" includeTestStepTime="true"/>
