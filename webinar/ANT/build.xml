@@ -16,7 +16,7 @@
 		<Provar-ConfigureDx testEnvironment="Env1"  
 				    provarHome="${provar.home}" 
 				    projectPath="${testproject.home}"
-				    testOutputlevel=”FINE"
+				    testOutputlevel="FINE"
 				    adminUser="${SFDC_USERNAME_SO}" />
 		<Provar-Compile provarHome="${provar.home}" projectPath="${testproject.home}"/>
 	
