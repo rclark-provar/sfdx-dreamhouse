@@ -29,7 +29,7 @@ node {
         stage('Create Scratch Org') {
             // need to pull out assigned username
             //rmsg = sh returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a df13@makepositive.com"
-            rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a ${SCRATCH_ALIAS} --durationdays 30"
+            rmsg = bat returnStdout: true, script: "\"${toolbelt}\"sfdx force:org:create -f config/developerOrg-scratch-def.json --json -s -a ${SCRATCH_ALIAS} --durationdays 1"
 
 	    println(rmsg)
 		
