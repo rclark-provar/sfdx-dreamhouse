@@ -5,7 +5,6 @@
 	<property name="testproject.home" value="webinar"/>
 	<property name="testproject.results" value="webinar/ANT/Results"/>
 	
-	
 	<taskdef name="Provar-Compile" classname="com.provar.testrunner.ant.CompileTask" classpath="${provar.home}/ant/ant-provar.jar"/>
 	<taskdef name="Run-Test-Case" classname="com.provar.testrunner.ant.RunnerTask" classpath="${provar.home}/ant/ant-provar.jar;${provar.home}/ant/ant-provar-bundled.jar;${provar.home}/ant/ant-provar-sf.jar"/>
 	<taskdef name="Test-Cycle-Report" classname="com.provar.testrunner.ant.TestCycleReportTask" classpath="${provar.home}/ant/ant-provar.jar;${provar.home}/ant/ant-provar-bundled.jar;${provar.home}/ant/ant-provar-sf.jar"/>
@@ -16,8 +15,9 @@
 				    provarHome="${provar.home}" 
 				    projectPath="${testproject.home}"
 				    testOutputlevel="FINE"
-				    adminUser="${SFDC_USERNAME_SO}" />
-		<Provar-Compile provarHome="${provar.home}" projectPath="${testproject.home}"/ -->
+				    adminUser="${SFDC_USERNAME_SO}" /-->
+		
+		<!-- Provar-Compile provarHome="${provar.home}" projectPath="${testproject.home}"/ -->
 	
 		<Run-Test-Case provarHome="${provar.home}" 
 				projectPath="${testproject.home}" 
